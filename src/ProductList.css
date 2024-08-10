@@ -250,3 +250,20 @@ body {
         text-align: center; /* Align text to the center */
       }
   }
+
+.product-cost {
+    color: red;
+}
+
+.product-description {
+    font-style: italic;
+}
+
+.cart-quantity {
+    position: absolute; 
+    top: 20px;
+    left: 20px;
+    width: 30px;
+    text-align: center;
+    font-size: 22px;
+}
