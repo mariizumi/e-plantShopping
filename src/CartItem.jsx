@@ -11,16 +11,14 @@ const CartItem = ({ onContinueShopping }) => {
     const calculateTotalAmount = () => {
         let totalCost = 0;
         for (const item of cart) {
-            // TODO: item.cost is stupid and is a string with a $ symbol in front
-            let actualCost = parseInt(item.cost.charAt(0) == '$' ? item.cost.substring(1) : item.cost);
+            let actualCost = parseFloat(item.cost.charAt(0) == '$' ? item.cost.substring(1) : item.cost);
             totalCost += item.quantity * actualCost;
         }
         return totalCost;
     };
 
     const handleContinueShopping = (e) => {
-        // TODO: This needed e passed to it
-        onContinueShopping();
+        onContinueShopping(e);
     };
 
     const handleCheckoutShopping = (e) => {
@@ -36,17 +34,17 @@ const CartItem = ({ onContinueShopping }) => {
         if (item.quantity > 1) {
             dispatch(updateQuantity({ name: item.name, quantity: item.quantity - 1 }));
         } else {
-            // TODO: REMOVE
+            dispatch(removeItem(item.name));
         }
     };
 
     const handleRemove = (item) => {
-        dispatch(removeItem(item));
+        dispatch(removeItem(item.name));
     };
 
     // Calculate total cost based on quantity for an item
     const calculateTotalCost = (item) => {
-        let actualCost = parseInt(item.cost.charAt(0) == '$' ? item.cost.substring(1) : item.cost);
+        let actualCost = parseFloat(item.cost.charAt(0) == '$' ? item.cost.substring(1) : item.cost);
         return item.quantity * actualCost;
     };
 
