@@ -317,7 +317,7 @@ function ProductList() {
                     <div className="product-title">{plant.name}</div>
                     <div className="product-cost">{plant.cost}</div>
                     <div className="product-description">{plant.description}</div>
-                    <button className="product-button" onClick={() => handleAddToCart(plant)} style={{ 'background-color': isPlantInCart(plant) ? '#777' : '#4caf50' }}>{getAddButtonText(plant)}</button>
+                    <button className="product-button" disabled={isPlantInCart(plant)} onClick={() => handleAddToCart(plant)} style={{ 'background-color': isPlantInCart(plant) ? '#777' : '#4caf50' }}>{getAddButtonText(plant)}</button>
                   </div>
                 ))}
               </div>
